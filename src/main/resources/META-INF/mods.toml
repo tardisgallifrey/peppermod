@@ -18,6 +18,10 @@ description='''
 It worked before, maybe it will work again.
 You should find a pepper in Creative mode, if you
 search for 'pepper'.  It will also work as food.
+
+This is a "magic pepper".  About 3/4 of the time,
+It will give you about 4 to six minutes of
+Water Breathing II.
 '''
 
 [[dependencies.peppermod]] #optional

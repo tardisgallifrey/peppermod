@@ -1,6 +1,9 @@
 package com.tardisgallifrey.peppermod.Init;
 
 import com.tardisgallifrey.peppermod.PepperModMain;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -41,12 +44,30 @@ public class ItemInit {
     // or as I know it, it is a call back anonymous function
     // that creates a new Item instance with new Item Properties.
     // Here, we aren't giving any.
-    public static final RegistryObject<Item> PEPPER = ITEMS.register("smile",
-            () -> new Item(new Item.Properties()
+    public static final RegistryObject<Item> PEPPER =
+            ITEMS.register("pepper",
+                () -> new Item(new Item.Properties()
                     .tab(ModCreativeTab.instance)
+                        .food( new FoodProperties.Builder()
+                                .nutrition(3)
+                                .saturationMod(1)
+                                .effect(() -> new MobEffectInstance(
+                                        MobEffects.WATER_BREATHING,
+                                        7200, 1),
+                                        0.7F)
+                                .build()
+                        )
             )); //the .tab(ModcreativeTab.instance) is
                 //adding the creative mode tab from below
                 //to the properties of our Smiley Face
+                //
+                //The effect method is specific.
+                //It must be:
+                // effect( () -> effect_supplier   , probability(float))
+                // where effect_supplier is similar to:
+                // new effect_instance( effect_type.type, param1...paramN)
+                //Water Breathing uses two params, ticks duration, and
+                //level WB1, WB2, etc.
 
     //This is an inner class to ItemInit
     //It allows creation of the

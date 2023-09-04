@@ -2,6 +2,5 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "peppermod:items/pepper"
-  },
-  "__comment__": "connects to pepper.png"
+  }
 }
